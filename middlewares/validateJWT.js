@@ -6,13 +6,13 @@ export const validateJWT = async (req = request, res = response, next) => {
   // Bearer token
   let token = req.headers["authorization"];
   
-  // token en limpio
-  token = token.split(" ")[1];
-
   if (!token) {
     return res.status(401).json({ message: "No token in request" });
   }
-
+  
+  // token en limpio
+  token = token.split(" ")[1];
+  
   try {
     // Verificamos el token y obtenemos el id del usuario
     const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);

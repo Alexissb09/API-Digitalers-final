@@ -1,0 +1,33 @@
+# GET ALL USERS
+GET http://localhost:8080/api/users
+
+###
+# GET ONE USER
+GET http://localhost:8080/api/users/6518a3fb294eccec61b8f642
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NTE4YTNmYjI5NGVjY2VjNjFiOGY2NDIiLCJpYXQiOjE2OTYxMTUyMjksImV4cCI6MTY5NjEyOTYyOX0.5o6iARnSmsGKCYJkrDJ-xQ8-Z2ROOB3c8eSDRk8jzQQ
+
+###
+# CREATE USERS
+POST http://localhost:8080/api/users/
+Content-Type: application/json
+
+{
+    "name": "example123",
+    "email": "example123@gmail.com",
+    "password": "example123"
+}
+
+###
+# CHANGE ONE USER
+PUT http://localhost:8080/api/users/6518a3fb294eccec61b8f642
+Content-Type: application/json
+
+{
+    "name": "example123",
+    "email": "example123@gmail.com",
+    "password": "example123"
+}
+
+###
+# LOGIC DELETE ONE USER
+DELETE http://localhost:8080/api/users/6518a3fb294eccec61b8f642

@@ -14,6 +14,9 @@ export default class Server {
       auth: "/api/auth",
     };
 
+    // Quito el header que indica que la app esta hecha con express
+    this.app.disable("x-powered-by");
+
     // Middlewares
     this.middlewares();
 

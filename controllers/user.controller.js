@@ -7,23 +7,24 @@ import { User } from "../models/user.js";
 export const getUser = async (req = request, res = response) => {
   const id = req.params.id;
 
-  const user = await User.findById(id);
+  const user = await User.findById(id); // Existencia del usuario manejada por middleware
 
   return res.status(200).json({ user });
 };
 
-// Obtenemos un usuario y podemos limitar la cantidad
+// Obtenemos los usuarios activos y podemos limitar la cantidad
 export const getUsers = async (req = request, res = response) => {
   const { limit = 5, from = 0 } = req.query;
-  const queryState = { status: true };
+  const queryStatus = { status: true };
 
   // Promise.all ejecuta al mismo tiempo, es mas eficiente en tiempo de respuesta que hacer un await detras de otro
   // Devolvemos primero la cantidad de documentos y luego el objeto de usuarios
   // Si uno tiene un error, caen los demas
 
+  // Buscamos los usuarios activos
   const [total, users] = await Promise.all([
-    User.countDocuments(queryState),
-    User.find(queryState).skip(Number(from)).limit(Number(limit)),
+    User.countDocuments(queryStatus),
+    User.find(queryStatus).skip(Number(from)).limit(Number(limit)),
   ]);
 
   res.status(200).json({ total, users });
