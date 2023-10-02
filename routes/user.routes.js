@@ -3,6 +3,7 @@ import { check } from "express-validator";
 
 import { validateFields } from "../middlewares/validateFields.js";
 import { validateJWT } from "../middlewares/validateJWT.js";
+import { isAdminRole } from "../middlewares/validateRoles.js";
 import { emailExist, userExist } from "../helpers/dbValidators.js";
 
 import {
@@ -58,6 +59,7 @@ userRouter.delete(
   "/:id",
   [
     validateJWT,
+    isAdminRole,
     check("id", "The ID is not valid").isMongoId(),
     check("id").custom(userExist),
     validateFields,

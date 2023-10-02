@@ -9,6 +9,12 @@ const UserSchema = Schema({
   },
   password: { type: String, required: [true, "The password is required"] },
   status: { type: Boolean, default: true },
+  role: {
+    type: String,
+    required: true,
+    enum: ["USER_ROLE", "ADMIN_ROLE"],
+    default: "USER_ROLE",
+  },
 });
 
 // Quitamos la version y password

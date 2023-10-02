@@ -33,7 +33,7 @@ export const validateJWT = async (req = request, res = response, next) => {
       });
     }
 
-    // Agregamos en la request los datos del usuario autenticado, no se usa, solo para verlo en la response
+    // Agregamos en la request los datos del usuario autenticado
     req.userAuth = userAuth;
 
     next();

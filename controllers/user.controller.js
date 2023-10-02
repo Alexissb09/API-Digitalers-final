@@ -32,11 +32,12 @@ export const getUsers = async (req = request, res = response) => {
 
 // Creamos un nuevo usuario y lo guardamos en db
 export const postUser = async (req, res = response) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   const user = new User({
     name,
     email,
     password,
+    role,
   });
 
   // Hash password

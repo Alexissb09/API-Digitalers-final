@@ -3,6 +3,7 @@ import cors from "cors";
 import { dbConnection } from "../database/config.js";
 import { authRouter } from "../routes/auth.routes.js";
 import { userRouter } from "../routes/user.routes.js";
+import { roleRouter } from "../routes/role.routes.js";
 
 export default class Server {
   constructor() {
@@ -12,6 +13,7 @@ export default class Server {
     this.paths = {
       users: "/api/users",
       auth: "/api/auth",
+      roles: "/api/roles",
     };
 
     // Quito el header que indica que la app esta hecha con express
@@ -48,6 +50,7 @@ export default class Server {
   routes() {
     this.app.use(this.paths.users, userRouter);
     this.app.use(this.paths.auth, authRouter);
+    this.app.use(this.paths.roles, roleRouter);
   }
 
   listen() {

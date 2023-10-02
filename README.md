@@ -32,6 +32,7 @@ Principal de usuarios:
 
     DELETE '/:id':
         - JWT Valido
+        - ADMIN ROLE
 
 Ruta de autenticacion:
 
@@ -40,3 +41,16 @@ Ruta de autenticacion:
     POST '/login':
         - email
         - password
+
+Ruta de roles:
+
+    /api/roles
+
+    GET '/'
+
+    GET '/:id'
+
+    POST '/':
+        - JWT Valido
+        - ADMIN ROLE
+        - role: String
